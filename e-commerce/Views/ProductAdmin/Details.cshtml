@@ -1,0 +1,98 @@
+﻿@using e_commerce.Models.implementations;
+@using e_commerce.Models.asbstractClasses;
+
+
+
+@model AbstractProduct
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+
+<div>
+    <h4>Product</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Category)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Category)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Manufacter)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Manufacter)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.YearOfRelease)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.YearOfRelease)
+        </dd>
+        @if (Model is Processor processor)
+        {
+            <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model  => @processor.BaseClockSpeed)
+            </dt>
+            <dd class="col-sm-10">
+                    @Html.DisplayFor(model  => @processor.BaseClockSpeed)
+            </dd>
+            <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => @processor.BoostClockSpeed)
+            </dt>
+            <dd class="col-sm-10">
+                    @Html.DisplayFor(model => @processor.BoostClockSpeed)
+            </dd>
+        }
+        @if (Model is VideoCard videocard)
+        {
+           
+            <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model  => @videocard.MemoryInGB)
+            </dt>
+            <dd class="col-sm-10">
+                    @Html.DisplayFor(model  => @videocard.MemoryInGB)
+            </dd>
+            <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => @videocard.Assembler)
+            </dt>
+            <dd class="col-sm-10">
+                    @Html.DisplayFor(model => @videocard.Assembler)
+            </dd>
+        }
+
+
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> 
+    <a asp-action="Index">Back to List</a>
+</div>
+</body>
+</html>

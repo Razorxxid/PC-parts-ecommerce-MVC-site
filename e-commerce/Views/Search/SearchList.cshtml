@@ -1,0 +1,31 @@
+﻿@using System.Collections;
+@using e_commerce.Dtos;
+@using e_commerce.Models.asbstractClasses;
+@using e_commerce.Models.implementations;
+@using e_commerce.Models.interfaces;
+@using Microsoft.AspNetCore.Http
+@using Microsoft.AspNetCore.Mvc.Rendering
+
+@model IEnumerable<SearchDto>
+
+<h2>Resultados de la busqueda</h2>
+
+
+<ul style ="list-style-type: none;">
+   
+    @if (Model != null )
+    {
+        @if (Model.Count() == 0)
+        {
+             <li> No products found</li>
+        }
+
+        @foreach (var product in Model)
+        {
+            <li>@product.Name - $@product.Price</li>
+        }
+    } else {
+        <li> Search again</li>
+    }
+  
+</ul>

@@ -1,0 +1,92 @@
+﻿@using e_commerce.Models.implementations;
+@model e_commerce.Models.asbstractClasses.AbstractProduct
+
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit</title>
+</head>
+<body>
+
+<h4>AbstractProduct</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+         <form asp-action="EditProduct" method="post" >
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Category" class="control-label"></label>
+                <input asp-for="Category" class="form-control" />
+                <span asp-validation-for="Category" class="text-danger"></span>
+            </div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Manufacter" class="control-label"></label>
+                <input asp-for="Manufacter" class="form-control" />
+                <span asp-validation-for="Manufacter" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            @if (Model is Processor processor)
+            {
+
+                <div class="form-group">
+                    <label asp-for="@processor.BaseClockSpeed" class="control-label"></label>
+                    <input asp-for="@processor.BaseClockSpeed" class="form-control" />
+                    <span asp-validation-for="@processor.BaseClockSpeed" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="@processor.BoostClockSpeed" class="control-label"></label>
+                    <input asp-for="@processor.BoostClockSpeed" class="form-control" />
+                    <span asp-validation-for="@processor.BoostClockSpeed" class="text-danger"></span>
+                </div>
+            }
+
+            @if (Model is VideoCard videoCard)
+            {
+              
+                <div class="form-group">
+                    <label asp-for="@videoCard.MemoryInGB" class="control-label"></label>
+                    <input asp-for="@videoCard.MemoryInGB" class="form-control" />
+                    <span asp-validation-for="@videoCard.MemoryInGB" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="@videoCard.Assembler" class="control-label"></label>
+                    <input asp-for="@videoCard.Assembler" class="form-control" />
+                    <span asp-validation-for="@videoCard.Assembler" class="text-danger"></span>
+                </div>
+            }
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+</body>
+</html>

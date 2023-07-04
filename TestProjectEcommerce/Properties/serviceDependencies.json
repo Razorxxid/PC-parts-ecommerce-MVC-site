@@ -1,0 +1,6 @@
+{
+  "dependencies": {},
+  "ConnectionStrings": {
+    "Products": "Server=LAPTOP-FKUUCFCP\\SQLEXPRESS;Database=Productos;Trusted_Connection=True;TrustServerCertificate=True;Encrypt=false;"
+  }
+}
